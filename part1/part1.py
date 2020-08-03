@@ -10,6 +10,18 @@ with open("/Users/rebeccamillwood/Desktop/She Codes /GitHub/python_project/part1
 #         print()
 #         print(key1, value1)
 
+for data in forecast_5days_a["DailyForecasts"]:
+    date = data["Date"]
+    minTemp = data["Temperature"]["Minimum"]["Value"]
+    maxTemp = data["Temperature"]["Maximum"]["Value"]
+    daytime = data["Day"]["LongPhrase"]
+    RainProbDay = data["Day"]["RainProbability"]
+    nighttime = data["Night"]["LongPhrase"]
+    RainProbNight = data["Night"]["RainProbability"]  
+
+    print(date, minTemp, maxTemp, daytime, RainProbDay, nighttime, RainProbNight)
+
+
 
 
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
