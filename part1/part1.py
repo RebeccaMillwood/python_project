@@ -1,6 +1,17 @@
 import json
 from datetime import datetime
 
+with open("/Users/rebeccamillwood/Desktop/She Codes /GitHub/python_project/part1/data/forecast_5days_a.json") as json_file:
+    forecast_5days_a = json.load(json_file)
+# print(forecast_5days_a)
+
+# for key, value in forecast_5days_a.items():
+#     for key1, value1 in value.items():
+#         print()
+#         print(key1, value1)
+
+
+
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 def format_temperature(temp):
@@ -29,11 +40,20 @@ def convert_f_to_c(temp_in_farenheit):
     """Converts an temperature from farenheit to celcius
 
     Args:
-        temp_in_farenheit: integer representing a temperature.
+        temp_in_farenheit: float representing a temperature.
     Returns:
-        An integer representing a temperature in degrees celcius.
+        A float representing a temperature in degrees celcius.
     """
     pass
+
+# def convert_f_to_c(temp_in_farenheit):
+    # farenheit = float(temp_in_farenheit)
+    # celsius = (farenheit - 32) * (5/9)
+    # print(celsius)
+
+# temp_in_farenheit = ??
+
+# convert_f_to_c(temp_in_farenheit)
 
 
 def calculate_mean(total, num_items):
@@ -47,6 +67,14 @@ def calculate_mean(total, num_items):
     """
     pass
 
+# def calculate_mean(total, num_items):
+#     mean = (total/num_items)
+#     print(mean)
+
+# num_items = ??
+# total = ??
+
+# calculate_mean(total, num_items)
 
 def process_weather(forecast_file):
     """Converts raw weather data into meaningful text.
