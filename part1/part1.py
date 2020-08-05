@@ -24,8 +24,6 @@ def convert_date(date):
     d = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S%z")
     return d.strftime("%A %d %B %Y")
 
-
-
 def convert_f_to_c(temp_in_farenheit):
     """Converts an temperature from farenheit to celcius
 
@@ -47,16 +45,8 @@ def calculate_mean(total, num_items):
     Returns:
         An integer representing the mean of the numbers.
     """
-    pass
-
-# def calculate_mean(total, num_items):
-#     mean = (total/num_items)
-#     print(mean)
-
-# num_items = ??
-# total = ??
-
-# calculate_mean(total, num_items)
+    mean = (total/num_items)
+    print(mean)
 
 def process_weather(forecast_file):
     """Converts raw weather data into meaningful text.
@@ -68,19 +58,31 @@ def process_weather(forecast_file):
         A string containing the processed and formatted weather data.
     """
 
+    num_items = 0
+   
+
+    minimum_temps = []
+    dates = []
+    # highest_temp = []
+
     with open(forecast_file) as json_file:
         forecast_5days_a = json.load(json_file)
 
-
     for data in forecast_5days_a["DailyForecasts"]:
         date = data["Date"]
+        dates.append(date)
         minTemp = data["Temperature"]["Minimum"]["Value"]
+        minimum_temps.append(minTemp)
+        lowest_temp = min(minimum_temps)
+        index_min = minimum_temps.index(lowest_temp)
         maxTemp = data["Temperature"]["Maximum"]["Value"]
         daytime = data["Day"]["LongPhrase"]
         RainProbDay = data["Day"]["RainProbability"]
         nighttime = data["Night"]["LongPhrase"]
         RainProbNight = data["Night"]["RainProbability"]  
         a = ""
+        num_items += 1
+        total = sum(num_items)
         print(f"--------{date}--------")
         print(f"Miniumum Temperature: {minTemp}")
         print(f"Maximum Temperature: {maxTemp}")
@@ -92,14 +94,23 @@ def process_weather(forecast_file):
         print(convert_date(date))
         minTempFormat = format_temperature(convert_f_to_c(minTemp))
         maxTempFormat = format_temperature(convert_f_to_c(maxTemp))
+        print(min(minimum_temps))
+        print(lowest_temp)
+        print(index_min)
+        # print(dates)
+        print(dates[index_min])
+        print(num_items)
+        print(total)
 
+# calculate_mean(total, num_items)
 
-    # print(f"5 Day Overview")
-    # print(f"{a:>3}The lowest temperature will be {minTemp}, and will occure on {date}.")
-    # print(f"{a:>3}The highest temperature will be {maxTemp}, and will occure on {date}.")
-    # print(f"{a:>3}The average low this week is {minTemp}.")
-    # print(f"{a:>3}The average high this week is {maxTemp}.")
-    # print()
+a = ""
+print(f"5 Day Overview")
+print(f"{a:>3}The lowest temperature will be min temp, and will occure on date.")
+print(f"{a:>3}The highest temperature will be max temp, and will occure on date.")
+print(f"{a:>3}The average low this week is min temp")
+print(f"{a:>3}The average high this week is max temp.")
+print()
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
