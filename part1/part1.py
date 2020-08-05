@@ -59,7 +59,7 @@ def process_weather(forecast_file):
     """
 
     num_items = 0
-   
+    total = 0
 
     minimum_temps = []
     dates = []
@@ -82,7 +82,8 @@ def process_weather(forecast_file):
         RainProbNight = data["Night"]["RainProbability"]  
         a = ""
         num_items += 1
-        total = sum(num_items)
+        total = total + int(num_items)
+        # total = sum(num_items)
         print(f"--------{date}--------")
         print(f"Miniumum Temperature: {minTemp}")
         print(f"Maximum Temperature: {maxTemp}")
@@ -101,6 +102,10 @@ def process_weather(forecast_file):
         print(dates[index_min])
         print(num_items)
         print(total)
+# this is printing as expected, i.e there are 5 items in num_items
+# so it's printing 5 + 4 + 3 + 2 + 1  = 15
+# I need the sum of the numbers inside each list, 
+# e.g the sum of all of the min temps, and all of the max temps
 
 # calculate_mean(total, num_items)
 
