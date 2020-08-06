@@ -47,7 +47,6 @@ def calculate_mean(total, num_items):
     """
     mean = (total/num_items)
     return(mean)
-    # print(mean)
 
 def process_weather(forecast_file):
     """Converts raw weather data into meaningful text.
@@ -102,29 +101,28 @@ def process_weather(forecast_file):
         print(f"Nighttime: {nighttime}")
         print(f"{a:>2}Chance of Rain: {RainProbNight}%")
         print()
-        print(min(minimum_temps))
-        print(lowest_temp)
-        print(index_min)
-        # print(dates)
-        print(dates[index_min])
-        print(num_items)
-        print(minimum_temps)
-        print(totalMin)
-        print(averageMin)
-        print(max(maximum_temps))
-        print(highest_temp)
-        print(index_max)
-        print(dates[index_max])
-        print(maximum_temps)
-        print(averageMax)
-
+        # print(min(minimum_temps))
+        # print(lowest_temp)
+        # print(index_min)
+        # # print(dates)
+        # print(dates[index_min])
+        # print(num_items)
+        # print(minimum_temps)
+        # print(totalMin)
+        # print(averageMin)
+        # print(max(maximum_temps))
+        # print(highest_temp)
+        # print(index_max)
+        # print(dates[index_max])
+        # print(maximum_temps)
+        # print(averageMax)
 
 a = ""
 print(f"5 Day Overview")
-print(f"{a:>3}The lowest temperature will be min temp, and will occur on date.")
-print(f"{a:>3}The highest temperature will be max temp, and will occur on date.")
-print(f"{a:>3}The average low this week is min temp.")
-print(f"{a:>3}The average high this week is max temp.")
+print(f"{a:>3}The lowest temperature will be lowest_temp, and will occur on index_min.")
+print(f"{a:>3}The highest temperature will be highest_temp, and will occur on index_date.")
+print(f"{a:>3}The average low this week is averageMin.")
+print(f"{a:>3}The average high this week is averageMax.")
 print()
 
 if __name__ == "__main__":
