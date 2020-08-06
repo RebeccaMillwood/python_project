@@ -35,7 +35,6 @@ def convert_f_to_c(temp_in_farenheit):
     farenheit = float(temp_in_farenheit)
     celsius = round((farenheit - 32) * (5/9),1)
     return celsius
-    # print(f"{celsius:.1f}")
 
 def calculate_mean(total, num_items):
     """Calculates the mean.
@@ -73,10 +72,9 @@ def process_weather(forecast_file):
         date = data["Date"]
         dateFormat = convert_date(date)
         dates.append(date)
-        # minTemp = data["Temperature"]["Minimum"]["Value"]
-        minTemp = (convert_f_to_c(data["Temperature"]["Minimum"]["Value"]))
-        # minTempFormat = format_temperature(convert_f_to_c(minTemp))
-        minimum_temps.append(minTemp)
+        minTemp = data["Temperature"]["Minimum"]["Value"]
+        minTempFormat = format_temperature(convert_f_to_c(minTemp))
+        minimum_temps.append(convert_f_to_c(minTemp))
         lowest_temp = min(minimum_temps)
         index_min = minimum_temps.index(lowest_temp)
         maxTemp = (convert_f_to_c(data["Temperature"]["Maximum"]["Value"]))
@@ -96,21 +94,20 @@ def process_weather(forecast_file):
         averageMax = calculate_mean(totalMax, num_items)
 
         print(f"--------{dateFormat}--------")
-        print(f"Miniumum Temperature: {minTemp}")
-        # print(f"Miniumum Temperature: {minTempFormat}")
+        print(f"Miniumum Temperature: {minTempFormat}")
         print(f"Maximum Temperature: {maxTemp}")
         print(f"Daytime: {daytime}")
         print(f"{a:>2}Chance of Rain: {RainProbDay}%")
         print(f"Nighttime: {nighttime}")
         print(f"{a:>2}Chance of Rain: {RainProbNight}%")
         print()
-        # print(min(minimum_temps))
-        # print(lowest_temp)
+        print(min(minimum_temps))
+        print(lowest_temp)
         # print(index_min)
         # # print(dates)
         # print(dates[index_min])
         # print(num_items)
-        # print(minimum_temps)
+        print(minimum_temps)
         # print(totalMin)
         # print(averageMin)
         # print(max(maximum_temps))
