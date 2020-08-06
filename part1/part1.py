@@ -33,8 +33,9 @@ def convert_f_to_c(temp_in_farenheit):
         An integer representing a temperature in degrees celcius.
     """
     farenheit = float(temp_in_farenheit)
-    celsius = (farenheit - 32) * (5/9)
-    print(f"{celsius:.1f}")
+    celsius = round((farenheit - 32) * (5/9),1)
+    return celsius
+    # print(f"{celsius:.1f}")
 
 def calculate_mean(total, num_items):
     """Calculates the mean.
@@ -72,13 +73,14 @@ def process_weather(forecast_file):
         date = data["Date"]
         dateFormat = convert_date(date)
         dates.append(date)
-        minTemp = data["Temperature"]["Minimum"]["Value"]
-        minTempFormat = format_temperature(convert_f_to_c(minTemp))
+        # minTemp = data["Temperature"]["Minimum"]["Value"]
+        minTemp = (convert_f_to_c(data["Temperature"]["Minimum"]["Value"]))
+        # minTempFormat = format_temperature(convert_f_to_c(minTemp))
         minimum_temps.append(minTemp)
         lowest_temp = min(minimum_temps)
         index_min = minimum_temps.index(lowest_temp)
-        maxTemp = data["Temperature"]["Maximum"]["Value"]
-        maxTempFormat = format_temperature(convert_f_to_c(maxTemp))
+        maxTemp = (convert_f_to_c(data["Temperature"]["Maximum"]["Value"]))
+        # maxTempFormat = format_temperature(convert_f_to_c(maxTemp))
         maximum_temps.append(maxTemp)
         highest_temp = max(maximum_temps)
         index_max = maximum_temps.index(highest_temp)
@@ -92,9 +94,10 @@ def process_weather(forecast_file):
         averageMin = calculate_mean(totalMin, num_items)
         totalMax = sum(maximum_temps)
         averageMax = calculate_mean(totalMax, num_items)
+
         print(f"--------{dateFormat}--------")
         print(f"Miniumum Temperature: {minTemp}")
-        print(f"Miniumum Temperature: {minTempFormat}")
+        # print(f"Miniumum Temperature: {minTempFormat}")
         print(f"Maximum Temperature: {maxTemp}")
         print(f"Daytime: {daytime}")
         print(f"{a:>2}Chance of Rain: {RainProbDay}%")
