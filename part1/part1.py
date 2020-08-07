@@ -64,36 +64,40 @@ def process_weather(forecast_file):
     minimum_temps = []
     dates = []
     maximum_temps = []
+    
 
     with open(forecast_file) as json_file:
         forecast_5days_a = json.load(json_file)
 
     for data in forecast_5days_a["DailyForecasts"]:
-        date = data["Date"]
-        dateFormat = convert_date(date)
+        date = convert_date(data["Date"])
         dates.append(date)
-        minTemp = data["Temperature"]["Minimum"]["Value"]
-        minTempFormat = format_temperature(convert_f_to_c(minTemp))
-        minimum_temps.append(convert_f_to_c(minTemp))
-        lowest_temp = min(minimum_temps)
-        index_min = minimum_temps.index(lowest_temp)
-        maxTemp = data["Temperature"]["Maximum"]["Value"]
-        maxTempFormat = format_temperature(convert_f_to_c(maxTemp))
-        maximum_temps.append(convert_f_to_c(maxTemp))
-        highest_temp = max(maximum_temps)
-        index_max = maximum_temps.index(highest_temp)
+
+        minTemp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
+        minTempFormat = format_temperature(minTemp)
+        minimum_temps.append(minTemp)
+
+        maxTemp = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
+        maxTempFormat = format_temperature(maxTemp)
+        maximum_temps.append(maxTemp)
+
+
         daytime = data["Day"]["LongPhrase"]
         RainProbDay = data["Day"]["RainProbability"]
+
         nighttime = data["Night"]["LongPhrase"]
         RainProbNight = data["Night"]["RainProbability"]  
+
         a = ""
         num_items += 1
+
         totalMin = sum(minimum_temps)
         averageMin = calculate_mean(totalMin, num_items)
         totalMax = sum(maximum_temps)
         averageMax = calculate_mean(totalMax, num_items)
+    
 
-        print(f"--------{dateFormat}--------")
+        print(f"--------{date}--------")
         print(f"Miniumum Temperature: {minTempFormat}")
         print(f"Maximum Temperature: {maxTempFormat}")
         print(f"Daytime: {daytime}")
@@ -101,6 +105,15 @@ def process_weather(forecast_file):
         print(f"Nighttime: {nighttime}")
         print(f"{a:>2}Chance of Rain: {RainProbNight}%")
         print()
+
+    lowest_temp = min(minimum_temps)
+    highest_temp = max(maximum_temps)
+    index_min = minimum_temps.index(lowest_temp)
+    index_max = maximum_temps.index(highest_temp)
+
+        # output_summary = all the summary variables in the for loop
+        # print(output_summary)
+
         # print(min(minimum_temps))
         # print(lowest_temp)
         # print(index_min)
@@ -117,13 +130,18 @@ def process_weather(forecast_file):
         # print(maximum_temps)
         # print(averageMax)
 
-a = ""
-print(f"5 Day Overview")
-print(f"{a:>3}The lowest temperature will be lowest_temp, and will occur on index_min.")
-print(f"{a:>3}The highest temperature will be highest_temp, and will occur on index_date.")
-print(f"{a:>3}The average low this week is averageMin.")
-print(f"{a:>3}The average high this week is averageMax.")
-print()
+# output_overview = all of my overview variables
+
+# output_total = output_overview + output_summary
+
+
+    a = ""
+    print(f"5 Day Overview")
+    print(f"{a:>3}The lowest temperature will be {lowest_temp}, and will occur on {index_min}.")
+    print(f"{a:>3}The highest temperature will be {highest_temp}, and will occur on index_date.")
+    print(f"{a:>3}The average low this week is averageMin.")
+    print(f"{a:>3}The average high this week is averageMax.")
+    print()
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
