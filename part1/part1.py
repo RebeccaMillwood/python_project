@@ -90,10 +90,7 @@ def process_weather(forecast_file):
         a = ""
         num_items += 1
 
-        totalMin = sum(minimum_temps)
-        averageMin = calculate_mean(totalMin, num_items)
-        totalMax = sum(maximum_temps)
-        averageMax = calculate_mean(totalMax, num_items)
+
     
         print(f"--------{date}--------")
         print(f"Miniumum Temperature: {minTempFormat}")
@@ -112,6 +109,13 @@ def process_weather(forecast_file):
     index_min_date = dates[index_min]
     index_max = maximum_temps.index(highest_temp)
     index_max_date = dates[index_max]
+
+    totalMin = sum(minimum_temps)
+    averageMin = calculate_mean(totalMin, num_items)
+    averageMinFormat = format_temperature(averageMin)
+    totalMax = sum(maximum_temps)
+    averageMax = calculate_mean(totalMax, num_items)
+    averageMaxFormat = format_temperature(averageMax)
 
 
         # output_summary = all the summary variables in the for loop
@@ -142,8 +146,8 @@ def process_weather(forecast_file):
     print(f"5 Day Overview")
     print(f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}.")
     print(f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}.")
-    print(f"{a:>3}The average low this week is averageMin.")
-    print(f"{a:>3}The average high this week is averageMax.")
+    print(f"{a:>3}The average low this week is {averageMinFormat}.")
+    print(f"{a:>3}The average high this week is {averageMaxFormat}.")
     print()
 
 if __name__ == "__main__":
