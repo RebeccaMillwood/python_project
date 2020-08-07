@@ -61,10 +61,9 @@ def process_weather(forecast_file):
     num_items = 0
     totalMin = 0
 
-    minimum_temps = []
     dates = []
+    minimum_temps = []
     maximum_temps = []
-    
 
     with open(forecast_file) as json_file:
         forecast_5days_a = json.load(json_file)
@@ -96,7 +95,6 @@ def process_weather(forecast_file):
         totalMax = sum(maximum_temps)
         averageMax = calculate_mean(totalMax, num_items)
     
-
         print(f"--------{date}--------")
         print(f"Miniumum Temperature: {minTempFormat}")
         print(f"Maximum Temperature: {maxTempFormat}")
@@ -107,9 +105,14 @@ def process_weather(forecast_file):
         print()
 
     lowest_temp = min(minimum_temps)
+    lowest_tempFormat = format_temperature(lowest_temp)
     highest_temp = max(maximum_temps)
+    highest_tempFormat = format_temperature(highest_temp)
     index_min = minimum_temps.index(lowest_temp)
+    index_min_date = dates[index_min]
     index_max = maximum_temps.index(highest_temp)
+    index_max_date = dates[index_max]
+
 
         # output_summary = all the summary variables in the for loop
         # print(output_summary)
@@ -137,8 +140,8 @@ def process_weather(forecast_file):
 
     a = ""
     print(f"5 Day Overview")
-    print(f"{a:>3}The lowest temperature will be {lowest_temp}, and will occur on {index_min}.")
-    print(f"{a:>3}The highest temperature will be {highest_temp}, and will occur on index_date.")
+    print(f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}.")
+    print(f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}.")
     print(f"{a:>3}The average low this week is averageMin.")
     print(f"{a:>3}The average high this week is averageMax.")
     print()
