@@ -90,16 +90,26 @@ def process_weather(forecast_file):
         a = ""
         num_items += 1
 
+        summary1 = f"--------{date}--------"
+        summary2 = f"Miniumum Temperature: {minTempFormat}"
+        summary3 = f"Maximum Temperature: {maxTempFormat}"
+        summary4 = f"Daytime: {daytime}"
+        summary5 = f"{a:>2}Chance of Rain: {RainProbDay}%"
+        summary6 = f"Nighttime: {nighttime}"
+        summary7 = f"{a:>2}Chance of Rain: {RainProbNight}%"
+        summary8 = "\n"
 
-    
-        print(f"--------{date}--------")
-        print(f"Miniumum Temperature: {minTempFormat}")
-        print(f"Maximum Temperature: {maxTempFormat}")
-        print(f"Daytime: {daytime}")
-        print(f"{a:>2}Chance of Rain: {RainProbDay}%")
-        print(f"Nighttime: {nighttime}")
-        print(f"{a:>2}Chance of Rain: {RainProbNight}%")
-        print()
+        summary = summary1 + "\n" + summary2 + "\n" + summary3 + "\n" + summary4 + "\n" + summary5 + "\n" + summary6 + "\n" + summary7 + "\n" + summary8
+        print(summary)
+        # print(f"--------{date}--------")
+        # print(f"Miniumum Temperature: {minTempFormat}")
+        # print(f"Maximum Temperature: {maxTempFormat}")
+        # print(f"Daytime: {daytime}")
+        # print(f"{a:>2}Chance of Rain: {RainProbDay}%")
+        # print(f"Nighttime: {nighttime}")
+        # print(f"{a:>2}Chance of Rain: {RainProbNight}%")
+        # print()
+
 
     lowest_temp = min(minimum_temps)
     lowest_tempFormat = format_temperature(lowest_temp)
@@ -117,10 +127,6 @@ def process_weather(forecast_file):
     averageMax = calculate_mean(totalMax, num_items)
     averageMaxFormat = format_temperature(averageMax)
 
-
-        # output_summary = all the summary variables in the for loop
-        # print(output_summary)
-
         # print(min(minimum_temps))
         # print(lowest_temp)
         # print(index_min)
@@ -137,18 +143,27 @@ def process_weather(forecast_file):
         # print(maximum_temps)
         # print(averageMax)
 
-# output_overview = all of my overview variables
-
-# output_total = output_overview + output_summary
-
-
     a = ""
-    print(f"5 Day Overview")
-    print(f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}.")
-    print(f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}.")
-    print(f"{a:>3}The average low this week is {averageMinFormat}.")
-    print(f"{a:>3}The average high this week is {averageMaxFormat}.")
-    print()
+    overview1 = f"5 Day Overview"
+    overview2 = f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}."
+    overview3 = f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}."
+    overview4 = f"{a:>3}The average low this week is {averageMinFormat}."
+    overview5 = f"{a:>3}The average high this week is {averageMaxFormat}."
+    overview6 = "\n"
+
+    overview = overview1 + "\n" + overview2 + "\n" + overview3 + "\n" + overview4 + "\n" + overview5 + "\n" + overview6
+    print(overview)
+
+    # output = overview + summary
+    # print(output)
+    # return(output)
+
+    # print(f"5 Day Overview")
+    # print(f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}.")
+    # print(f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}.")
+    # print(f"{a:>3}The average low this week is {averageMinFormat}.")
+    # print(f"{a:>3}The average high this week is {averageMaxFormat}.")
+    # print()
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
