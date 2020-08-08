@@ -117,7 +117,7 @@ def process_weather(forecast_file):
     averageMax = calculate_mean(totalMax, num_items)
     averageMaxFormat = format_temperature(averageMax)
 
-    overview1 = f"5 Day Overview"
+    overview1 = f"{num_items} Day Overview"
     overview2 = f"    The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}."
     overview3 = f"    The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}."
     overview4 = f"    The average low this week is {averageMinFormat}."
