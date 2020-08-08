@@ -45,7 +45,7 @@ def calculate_mean(total, num_items):
     Returns:
         An integer representing the mean of the numbers.
     """
-    mean = (total/num_items)
+    mean = round((total/num_items),1)
     return(mean)
 
 def process_weather(forecast_file):
@@ -64,6 +64,7 @@ def process_weather(forecast_file):
     dates = []
     minimum_temps = []
     maximum_temps = []
+    summary = ""
 
     with open(forecast_file) as json_file:
         forecast_5days_a = json.load(json_file)
@@ -86,20 +87,19 @@ def process_weather(forecast_file):
         nighttime = data["Night"]["LongPhrase"]
         RainProbNight = data["Night"]["RainProbability"]  
 
-        a = ""
         num_items += 1
 
-        summary1 = f"--------{date}--------"
-        summary2 = f"Miniumum Temperature: {minTempFormat}"
+        summary1 = f"-------- {date} --------"
+        summary2 = f"Minimum Temperature: {minTempFormat}"
         summary3 = f"Maximum Temperature: {maxTempFormat}"
         summary4 = f"Daytime: {daytime}"
-        summary5 = f"{a:>2}Chance of Rain: {RainProbDay}%"
+        summary5 = f"    Chance of rain:  {RainProbDay}%"
         summary6 = f"Nighttime: {nighttime}"
-        summary7 = f"{a:>2}Chance of Rain: {RainProbNight}%"
+        summary7 = f"    Chance of rain:  {RainProbNight}%"
         summary8 = "\n"
 
-        summary = summary1 + "\n" + summary2 + "\n" + summary3 + "\n" + summary4 + "\n" + summary5 + "\n" + summary6 + "\n" + summary7 + "\n" + summary8
-        print(summary)
+        summary += summary1 + "\n" + summary2 + "\n" + summary3 + "\n" + summary4 + "\n" + summary5 + "\n" + summary6 + "\n" + summary7 + "\n" + summary8
+        # print(summary)
 
     lowest_temp = min(minimum_temps)
     lowest_tempFormat = format_temperature(lowest_temp)
@@ -117,20 +117,19 @@ def process_weather(forecast_file):
     averageMax = calculate_mean(totalMax, num_items)
     averageMaxFormat = format_temperature(averageMax)
 
-    a = ""
     overview1 = f"5 Day Overview"
-    overview2 = f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}."
-    overview3 = f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}."
-    overview4 = f"{a:>3}The average low this week is {averageMinFormat}."
-    overview5 = f"{a:>3}The average high this week is {averageMaxFormat}."
+    overview2 = f"    The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}."
+    overview3 = f"    The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}."
+    overview4 = f"    The average low this week is {averageMinFormat}."
+    overview5 = f"    The average high this week is {averageMaxFormat}."
     overview6 = "\n"
 
     overview = overview1 + "\n" + overview2 + "\n" + overview3 + "\n" + overview4 + "\n" + overview5 + "\n" + overview6
-    print(overview)
+    # print(overview)
 
-    # output = overview + summary
+    output = overview + summary
     # print(output)
-    # return(output)
+    return(output)
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
