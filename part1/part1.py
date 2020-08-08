@@ -80,7 +80,6 @@ def process_weather(forecast_file):
         maxTempFormat = format_temperature(maxTemp)
         maximum_temps.append(maxTemp)
 
-
         daytime = data["Day"]["LongPhrase"]
         RainProbDay = data["Day"]["RainProbability"]
 
@@ -101,15 +100,6 @@ def process_weather(forecast_file):
 
         summary = summary1 + "\n" + summary2 + "\n" + summary3 + "\n" + summary4 + "\n" + summary5 + "\n" + summary6 + "\n" + summary7 + "\n" + summary8
         print(summary)
-        # print(f"--------{date}--------")
-        # print(f"Miniumum Temperature: {minTempFormat}")
-        # print(f"Maximum Temperature: {maxTempFormat}")
-        # print(f"Daytime: {daytime}")
-        # print(f"{a:>2}Chance of Rain: {RainProbDay}%")
-        # print(f"Nighttime: {nighttime}")
-        # print(f"{a:>2}Chance of Rain: {RainProbNight}%")
-        # print()
-
 
     lowest_temp = min(minimum_temps)
     lowest_tempFormat = format_temperature(lowest_temp)
@@ -127,22 +117,6 @@ def process_weather(forecast_file):
     averageMax = calculate_mean(totalMax, num_items)
     averageMaxFormat = format_temperature(averageMax)
 
-        # print(min(minimum_temps))
-        # print(lowest_temp)
-        # print(index_min)
-        # # print(dates)
-        # print(dates[index_min])
-        # print(num_items)
-        # print(minimum_temps)
-        # print(totalMin)
-        # print(averageMin)
-        # print(max(maximum_temps))
-        # print(highest_temp)
-        # print(index_max)
-        # print(dates[index_max])
-        # print(maximum_temps)
-        # print(averageMax)
-
     a = ""
     overview1 = f"5 Day Overview"
     overview2 = f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}."
@@ -157,13 +131,6 @@ def process_weather(forecast_file):
     # output = overview + summary
     # print(output)
     # return(output)
-
-    # print(f"5 Day Overview")
-    # print(f"{a:>3}The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}.")
-    # print(f"{a:>3}The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}.")
-    # print(f"{a:>3}The average low this week is {averageMinFormat}.")
-    # print(f"{a:>3}The average high this week is {averageMaxFormat}.")
-    # print()
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
