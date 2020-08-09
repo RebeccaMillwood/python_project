@@ -53,6 +53,20 @@ for data in forecast_5days_a["DailyForecasts"]:
     date = convert_date(data["Date"])
     dates.append(date)   
 
+# with open("data/forecast_5days_b.json") as json_file:
+#     forecast_5days_b = json.load(json_file)
+
+# for data in forecast_5days_b["DailyForecasts"]:
+#     date = convert_date(data["Date"])
+#     dates.append(date)   
+
+# with open("data/forecast_8days.json") as json_file:
+#     forecast_8days = json.load(json_file)
+
+# for data in forecast_8days["DailyForecasts"]:
+#     date = convert_date(data["Date"])
+#     dates.append(date)   
+
     minTemp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
     minTempFormat = format_temperature(minTemp)
     minimum_temps.append(minTemp)
