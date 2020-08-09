@@ -38,11 +38,36 @@ def convert_f_to_c(temp_in_farenheit):
     celsius = round((farenheit - 32) * (5/9),1)
     return celsius
 
+dates = []
+minimum_temps = []
+maximum_temps = []
+minimum_realfeel_temps = []
+minimum_realfeelshade_temps = []
+
+dataframe = {}
 
 with open(forecast_file) as json_file:
-    forecast_5days_b = json.load(json_file)
+    forecast_5days_a = json.load(json_file)
 
+for data in forecast_5days_a["DailyForecasts"]:
+    date = convert_date(data["Date"])
+    dates.append(date)   
 
+    minTemp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
+    minTempFormat = format_temperature(minTemp)
+    minimum_temps.append(minTemp)
+
+    maxTemp = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
+    maxTempFormat = format_temperature(maxTemp)
+    maximum_temps.append(maxTemp)
+
+    minRealFeel = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
+    minRealFeelFormat = format_temperature(minRealFeel)
+    minimum_realfeel_temps.append(minRealFeel)
+
+    minRealFeelShade = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
+    minRealFeelShadeFormat = format_temperature(minRealFeelShade)
+    minimum_realfeelshade_temps.append(minRealFeelShade)
 
 
 
