@@ -78,33 +78,44 @@ for data in forecast_5days_a["DailyForecasts"]:
 # graph 1: min and max temps for each day
 
 dataframe1 = {
-    "minimum": minimum_temps,
-    "maximum": maximum_temps,
-    "date": dates
+    "Minimum": minimum_temps,
+    "Maximum": maximum_temps,
+    "Date": dates,
 }
 
-fig = px.bar(
+fig = px.line(
     dataframe1,
-    y=["minimum", "maximum"],
-    x="date",
-    barmode="group"
+    y=["Minimum", "Maximum"],
+    x="Date",
+    labels={
+        "value": "Temperature in Celsius",
+        "variable": "Temperature",
+    },
+    title="Daily Forecast",
+    template="plotly_dark",
 )
 
 fig.show() 
 
 # graph 2: min, min "real feel", and min "real feel shade" temps
 
-dataframe1 = {
-    "minimum": minimum_temps,
-    "minimum real feel": minimum_realfeel_temps,
-    "minimum real feel shade": minimum_realfeelshade_temps,
-    "date": dates
+dataframe2 = {
+    "Minimum": minimum_temps,
+    "Minimum Real Feel": minimum_realfeel_temps,
+    "Minimum Real Feel Shade": minimum_realfeelshade_temps,
+    "Date": dates
 }
 
 fig = px.bar(
-    dataframe1,
-    y=["minimum", "minimum real feel", "minimum real feel shade"],
-    x="date",
+    dataframe2,
+    y=["Minimum", "Minimum Real Feel", "Minimum Real Feel Shade"],
+    x="Date",
+    labels={
+        "value": "Temperature in Celsius",
+        "variable": "Temperature",
+    },
+    title="Daily Real Feel",
+    template="plotly_dark",
     barmode="group"
 )
 
