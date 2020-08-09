@@ -44,9 +44,9 @@ maximum_temps = []
 minimum_realfeel_temps = []
 minimum_realfeelshade_temps = []
 
-dataframe = {}
+# dataframe = {}
 
-with open(forecast_file) as json_file:
+with open("data/forecast_5days_a.json") as json_file:
     forecast_5days_a = json.load(json_file)
 
 for data in forecast_5days_a["DailyForecasts"]:
@@ -69,10 +69,46 @@ for data in forecast_5days_a["DailyForecasts"]:
     minRealFeelShadeFormat = format_temperature(minRealFeelShade)
     minimum_realfeelshade_temps.append(minRealFeelShade)
 
-
+# print(dates)
+# print(minimum_temps)
+# print(maximum_temps)
+# print(minimum_realfeel_temps)
+# print(minimum_realfeelshade_temps)
 
 # graph 1: min and max temps for each day
+
+dataframe1 = {
+    "minimum": minimum_temps,
+    "maximum": maximum_temps,
+    "date": dates
+}
+
+fig = px.bar(
+    dataframe1,
+    y=["minimum", "maximum"],
+    x="date",
+    barmode="group"
+)
+
+fig.show() 
+
 # graph 2: min, min "real feel", and min "real feel shade" temps
+
+dataframe1 = {
+    "minimum": minimum_temps,
+    "minimum real feel": minimum_realfeel_temps,
+    "minimum real feel shade": minimum_realfeelshade_temps,
+    "date": dates
+}
+
+fig = px.bar(
+    dataframe1,
+    y=["minimum", "minimum real feel", "minimum real feel shade"],
+    x="date",
+    barmode="group"
+)
+
+fig.show() 
 
 # convert date
 # convert temp
