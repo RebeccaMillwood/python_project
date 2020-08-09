@@ -120,6 +120,3 @@ fig = px.bar(
 )
 
 fig.show() 
-
-# convert date
-# convert temp
