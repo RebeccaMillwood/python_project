@@ -61,11 +61,11 @@ for data in forecast_5days_a["DailyForecasts"]:
     maxTempFormat = format_temperature(maxTemp)
     maximum_temps.append(maxTemp)
 
-    minRealFeel = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
+    minRealFeel = convert_f_to_c(data["RealFeelTemperature"]["Minimum"]["Value"])
     minRealFeelFormat = format_temperature(minRealFeel)
     minimum_realfeel_temps.append(minRealFeel)
 
-    minRealFeelShade = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
+    minRealFeelShade = convert_f_to_c(data["RealFeelTemperatureShade"]["Minimum"]["Value"])
     minRealFeelShadeFormat = format_temperature(minRealFeelShade)
     minimum_realfeelshade_temps.append(minRealFeelShade)
 
