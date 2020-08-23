@@ -120,7 +120,20 @@ dataframe2 = {
     "Date": dates
 }
 
-fig = px.bar(
+# fig = px.bar(
+#     dataframe2,
+#     y=["Minimum", "Minimum Real Feel", "Minimum Real Feel Shade"],
+#     x="Date",
+#     labels={
+#         "value": "Temperature in Celsius",
+#         "variable": "Temperature",
+#     },
+#     title="Daily Real Feel",
+#     template="plotly_dark",
+#     barmode="group"
+# )
+
+fig = px.line(
     dataframe2,
     y=["Minimum", "Minimum Real Feel", "Minimum Real Feel Shade"],
     x="Date",
@@ -130,7 +143,6 @@ fig = px.bar(
     },
     title="Daily Real Feel",
     template="plotly_dark",
-    barmode="group"
 )
 
 fig.show() 
