@@ -59,7 +59,7 @@ def process_weather(forecast_file):
     """
 
     num_items = 0
-    totalMin = 0
+    total_min = 0
 
     dates = []
     minimum_temps = []
@@ -73,55 +73,55 @@ def process_weather(forecast_file):
         date = convert_date(data["Date"])
         dates.append(date)
 
-        minTemp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
-        minTempFormat = format_temperature(minTemp)
-        minimum_temps.append(minTemp)
+        min_temp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
+        min_temp_format = format_temperature(min_temp)
+        minimum_temps.append(min_temp)
 
-        maxTemp = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
-        maxTempFormat = format_temperature(maxTemp)
-        maximum_temps.append(maxTemp)
+        max_temp = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
+        max_temp_format = format_temperature(max_temp)
+        maximum_temps.append(max_temp)
 
         daytime = data["Day"]["LongPhrase"]
-        RainProbDay = data["Day"]["RainProbability"]
+        rain_prob_day = data["Day"]["RainProbability"]
 
         nighttime = data["Night"]["LongPhrase"]
-        RainProbNight = data["Night"]["RainProbability"]  
+        rain_prob_night = data["Night"]["RainProbability"]  
 
         num_items += 1
 
         summary1 = f"-------- {date} --------"
-        summary2 = f"Minimum Temperature: {minTempFormat}"
-        summary3 = f"Maximum Temperature: {maxTempFormat}"
+        summary2 = f"Minimum Temperature: {min_temp_format}"
+        summary3 = f"Maximum Temperature: {max_temp_format}"
         summary4 = f"Daytime: {daytime}"
-        summary5 = f"    Chance of rain:  {RainProbDay}%"
+        summary5 = f"    Chance of rain:  {rain_prob_day}%"
         summary6 = f"Nighttime: {nighttime}"
-        summary7 = f"    Chance of rain:  {RainProbNight}%"
+        summary7 = f"    Chance of rain:  {rain_prob_night}%"
         summary8 = "\n"
 
         summary += summary1 + "\n" + summary2 + "\n" + summary3 + "\n" + summary4 + "\n" + summary5 + "\n" + summary6 + "\n" + summary7 + "\n" + summary8
         # print(summary)
 
     lowest_temp = min(minimum_temps)
-    lowest_tempFormat = format_temperature(lowest_temp)
+    lowest_temp_format = format_temperature(lowest_temp)
     highest_temp = max(maximum_temps)
-    highest_tempFormat = format_temperature(highest_temp)
+    highest_temp_format = format_temperature(highest_temp)
     index_min = minimum_temps.index(lowest_temp)
     index_min_date = dates[index_min]
     index_max = maximum_temps.index(highest_temp)
     index_max_date = dates[index_max]
 
-    totalMin = sum(minimum_temps)
-    averageMin = calculate_mean(totalMin, num_items)
-    averageMinFormat = format_temperature(averageMin)
-    totalMax = sum(maximum_temps)
-    averageMax = calculate_mean(totalMax, num_items)
-    averageMaxFormat = format_temperature(averageMax)
+    total_min = sum(minimum_temps)
+    average_min = calculate_mean(total_min, num_items)
+    average_min_format = format_temperature(average_min)
+    total_max = sum(maximum_temps)
+    average_max = calculate_mean(total_max, num_items)
+    average_max_format = format_temperature(average_max)
 
     overview1 = f"{num_items} Day Overview"
-    overview2 = f"    The lowest temperature will be {lowest_tempFormat}, and will occur on {index_min_date}."
-    overview3 = f"    The highest temperature will be {highest_tempFormat}, and will occur on {index_max_date}."
-    overview4 = f"    The average low this week is {averageMinFormat}."
-    overview5 = f"    The average high this week is {averageMaxFormat}."
+    overview2 = f"    The lowest temperature will be {lowest_temp_format}, and will occur on {index_min_date}."
+    overview3 = f"    The highest temperature will be {highest_temp_format}, and will occur on {index_max_date}."
+    overview4 = f"    The average low this week is {average_min_format}."
+    overview5 = f"    The average high this week is {average_max_format}."
     overview6 = "\n"
 
     overview = overview1 + "\n" + overview2 + "\n" + overview3 + "\n" + overview4 + "\n" + overview5 + "\n" + overview6

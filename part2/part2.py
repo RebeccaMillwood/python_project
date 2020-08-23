@@ -41,8 +41,8 @@ def convert_f_to_c(temp_in_farenheit):
 dates = []
 minimum_temps = []
 maximum_temps = []
-minimum_realfeel_temps = []
-minimum_realfeelshade_temps = []
+minimum_real_feel_temps = []
+minimum_real_feel_shade_temps = []
 
 # dataframe = {}
 
@@ -67,21 +67,21 @@ for data in forecast_5days_a["DailyForecasts"]:
 #     date = convert_date(data["Date"])
 #     dates.append(date)   
 
-    minTemp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
-    minTempFormat = format_temperature(minTemp)
-    minimum_temps.append(minTemp)
+    min_temp = convert_f_to_c(data["Temperature"]["Minimum"]["Value"])
+    min_temp_format = format_temperature(min_temp)
+    minimum_temps.append(min_temp)
 
-    maxTemp = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
-    maxTempFormat = format_temperature(maxTemp)
-    maximum_temps.append(maxTemp)
+    max_temp = convert_f_to_c(data["Temperature"]["Maximum"]["Value"])
+    max_temp_format = format_temperature(max_temp)
+    maximum_temps.append(max_temp)
 
-    minRealFeel = convert_f_to_c(data["RealFeelTemperature"]["Minimum"]["Value"])
-    minRealFeelFormat = format_temperature(minRealFeel)
-    minimum_realfeel_temps.append(minRealFeel)
+    min_real_feel = convert_f_to_c(data["RealFeelTemperature"]["Minimum"]["Value"])
+    min_real_feel_format = format_temperature(min_real_feel)
+    minimum_real_feel_temps.append(min_real_feel)
 
-    minRealFeelShade = convert_f_to_c(data["RealFeelTemperatureShade"]["Minimum"]["Value"])
-    minRealFeelShadeFormat = format_temperature(minRealFeelShade)
-    minimum_realfeelshade_temps.append(minRealFeelShade)
+    min_real_feel_shade = convert_f_to_c(data["RealFeelTemperatureShade"]["Minimum"]["Value"])
+    min_real_feel_shade_format = format_temperature(min_real_feel_shade)
+    minimum_real_feel_shade_temps.append(min_real_feel_shade)
 
 # print(dates)
 # print(minimum_temps)
@@ -115,8 +115,8 @@ fig.show()
 
 dataframe2 = {
     "Minimum": minimum_temps,
-    "Minimum Real Feel": minimum_realfeel_temps,
-    "Minimum Real Feel Shade": minimum_realfeelshade_temps,
+    "Minimum Real Feel": minimum_real_feel_temps,
+    "Minimum Real Feel Shade": minimum_real_feel_shade_temps,
     "Date": dates
 }
 
